@@ -1,0 +1,466 @@
+{
+    "info": {
+      "_postman_id": "a7b8c9d0-e29b-41d4-a716-556655440000",
+      "name": "Belletrix API Collection",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Authentication",
+        "item": [
+          {
+            "name": "Create Admin",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"username\": \"adminuser\",\n  \"email\": \"admin@example.com\",\n  \"password\": \"securepassword123\",\n  \"phone\": \"+1234567890\",\n  \"isAdmin\": true\n}"
+              },
+              "url": {
+                "raw": "{{baseUrl}}/api/auth/create-admin",
+                "host": ["{{baseUrl}}"],
+                "path": ["api", "auth", "create-admin"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Login",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"email\": \"admin@example.com\",\n  \"password\": \"securepassword123\"\n}"
+              },
+              "url": {
+                "raw": "{{baseUrl}}/api/auth/login",
+                "host": ["{{baseUrl}}"],
+                "path": ["api", "auth", "login"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Upload Image",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{jwtToken}}"
+                }
+              ],
+              "body": {
+                "mode": "formdata",
+                "formdata": [
+                  {
+                    "key": "image",
+                    "type": "file",
+                    "src": []
+                  }
+                ]
+              },
+              "url": {
+                "raw": "{{baseUrl}}/api/auth/upload-image",
+                "host": ["{{baseUrl}}"],
+                "path": ["api", "auth", "upload-image"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Get Profile",
+            "request": {
+              "method": "GET",
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{jwtToken}}"
+                }
+              ],
+              "url": {
+                "raw": "{{baseUrl}}/api/auth/profile",
+                "host": ["{{baseUrl}}"],
+                "path": ["api", "auth", "profile"]
+              }
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "Hero",
+        "item": [
+          {
+            "name": "Get Hero",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "{{baseUrl}}/api/landing/hero",
+                "host": ["{{baseUrl}}"],
+                "path": ["api", "landing", "hero"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Create Hero",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{jwtToken}}"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"slides\": [\n    {\n      \"title\": \"New Strategic Transformation\",\n      \"subtitle\": \"NetSuite Expertise\",\n      \"description\": \"Unlock your business potential with our solutions.\",\n      \"video\": \"/Videos/NewHeroVideo.mp4\",\n      \"cta\": \"Get Started\"\n    }\n  ],\n  \"stats\": [\n    { \"value\": \"250+\", \"label\": \"Projects Completed\" }\n  ]\n}"
+              },
+              "url": {
+                "raw": "{{baseUrl}}/api/landing/hero",
+                "host": ["{{baseUrl}}"],
+                "path": ["api", "landing", "hero"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Update Hero",
+            "request": {
+              "method": "PATCH",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{jwtToken}}"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"slides\": [\n    {\n      \"title\": \"Updated Strategic Transformation\",\n      \"subtitle\": \"Enhanced NetSuite Expertise\",\n      \"description\": \"Updated solutions for your business.\",\n      \"video\": \"/Videos/UpdatedHeroVideo.mp4\",\n      \"cta\": \"Discover Now\"\n    }\n  ]\n}"
+              },
+              "url": {
+                "raw": "{{baseUrl}}/api/landing/hero",
+                "host": ["{{baseUrl}}"],
+                "path": ["api", "landing", "hero"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Delete Hero",
+            "request": {
+              "method": "DELETE",
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{jwtToken}}"
+                }
+              ],
+              "url": {
+                "raw": "{{baseUrl}}/api/landing/hero",
+                "host": ["{{baseUrl}}"],
+                "path": ["api", "landing", "hero"]
+              }
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "Services",
+        "item": [
+          {
+            "name": "Get Services",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "{{baseUrl}}/api/landing/services",
+                "host": ["{{baseUrl}}"],
+                "path": ["api", "landing", "services"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Create Services",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{jwtToken}}"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"services\": [\n    {\n      \"title\": \"New Service\",\n      \"description\": \"A new service for your business.\",\n      \"icon\": \"StarOutlined\",\n      \"color\": \"#FF0000\",\n      \"details\": [\"Feature 1\", \"Feature 2\"],\n      \"stats\": \"90% success rate\"\n    }\n  ],\n  \"sectionHeader\": {\n    \"title\": \"New Services\",\n    \"subtitle\": \"Explore our new offerings\",\n    \"gradientText\": \"New Offerings\"\n  },\n  \"viewAllButton\": {\n    \"text\": \"View All New Services\"\n  }\n}"
+              },
+              "url": {
+                "raw": "{{baseUrl}}/api/landing/services",
+                "host": ["{{baseUrl}}"],
+                "path": ["api", "landing", "services"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Update Services",
+            "request": {
+              "method": "PATCH",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{jwtToken}}"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"services\": [\n    {\n      \"title\": \"Updated Service\",\n      \"description\": \"Updated service description.\",\n      \"icon\": \"StarOutlined\",\n      \"color\": \"#FF0000\",\n      \"details\": [\"Updated Feature 1\", \"Updated Feature 2\"],\n      \"stats\": \"95% success rate\"\n    }\n  ]\n}"
+              },
+              "url": {
+                "raw": "{{baseUrl}}/api/landing/services",
+                "host": ["{{baseUrl}}"],
+                "path": ["api", "landing", "services"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Delete Services",
+            "request": {
+              "method": "DELETE",
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{jwtToken}}"
+                }
+              ],
+              "url": {
+                "raw": "{{baseUrl}}/api/landing/services",
+                "host": ["{{baseUrl}}"],
+                "path": ["api", "landing", "services"]
+              }
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "Testimonials",
+        "item": [
+          {
+            "name": "Get Testimonials",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "{{baseUrl}}/api/landing/testimonials",
+                "host": ["{{baseUrl}}"],
+                "path": ["api", "landing", "testimonials"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Create Testimonials",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{jwtToken}}"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"testimonials\": [\n    {\n      \"id\": 6,\n      \"quote\": \"Amazing service! Highly recommend.\",\n      \"name\": \"Alice Brown\",\n      \"title\": \"CTO\",\n      \"avatar\": \"AB\",\n      \"rating\": 5,\n      \"results\": [\"Great support\", \"Fast delivery\"]\n    }\n  ],\n  \"sectionHeader\": {\n    \"title\": \"New Testimonials\",\n    \"subtitle\": \"What our new clients say\",\n    \"gradientText\": \"New Clients\"\n  },\n  \"ctaButton\": {\n    \"text\": \"Contact Us\"\n  }\n}"
+              },
+              "url": {
+                "raw": "{{baseUrl}}/api/landing/testimonials",
+                "host": ["{{baseUrl}}"],
+                "path": ["api", "landing", "testimonials"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Update Testimonials",
+            "request": {
+              "method": "PATCH",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{jwtToken}}"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"testimonials\": [\n    {\n      \"id\": 6,\n      \"quote\": \"Updated amazing service! Highly recommend.\",\n      \"name\": \"Alice Brown\",\n      \"title\": \"CTO\",\n      \"avatar\": \"AB\",\n      \"rating\": 5,\n      \"results\": [\"Updated support\", \"Faster delivery\"]\n    }\n  ]\n}"
+              },
+              "url": {
+                "raw": "{{baseUrl}}/api/landing/testimonials",
+                "host": ["{{baseUrl}}"],
+                "path": ["api", "landing", "testimonials"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Delete Testimonials",
+            "request": {
+              "method": "DELETE",
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{jwtToken}}"
+                }
+              ],
+              "url": {
+                "raw": "{{baseUrl}}/api/landing/testimonials",
+                "host": ["{{baseUrl}}"],
+                "path": ["api", "landing", "testimonials"]
+              }
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "Industries",
+        "item": [
+          {
+            "name": "Get Industries",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "{{baseUrl}}/api/landing/industries",
+                "host": ["{{baseUrl}}"],
+                "path": ["api", "landing", "industries"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Create Industries",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{jwtToken}}"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"industries\": [\n    {\n      \"id\": \"healthcare\",\n      \"label\": \"Healthcare\",\n      \"icon\": \"HealthAndSafety\",\n      \"content\": {\n        \"title\": \"Healthcare Solutions\",\n        \"description\": \"Optimize healthcare operations with NetSuite.\",\n        \"features\": [\"Patient management\", \"Billing automation\"],\n        \"image\": \"https://images.unsplash.com/photo-1516321310762-97b900d9b0a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80\"\n      }\n    }\n  ],\n  \"sectionHeader\": {\n    \"chipLabel\": \"NEW INDUSTRY\",\n    \"title\": \"New Industry Solutions\",\n    \"highlightedWord\": \"New\",\n    \"description\": \"Tailored solutions for new industries.\"\n  },\n  \"styles\": {\n    \"blueGradient\": \"linear-gradient(135deg, #2563eb 0%, #60a5fa 100%)\",\n    \"glassBg\": \"rgba(255,255,255,0.7)\"\n  }\n}"
+              },
+              "url": {
+                "raw": "{{baseUrl}}/api/landing/industries",
+                "host": ["{{baseUrl}}"],
+                "path": ["api", "landing", "industries"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Update Industries",
+            "request": {
+              "method": "PATCH",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{jwtToken}}"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"industries\": [\n    {\n      \"id\": \"healthcare\",\n      \"label\": \"Healthcare\",\n      \"icon\": \"HealthAndSafety\",\n      \"content\": {\n        \"title\": \"Updated Healthcare Solutions\",\n        \"description\": \"Enhanced healthcare operations with NetSuite.\",\n        \"features\": [\"Updated patient management\", \"Advanced billing\"],\n        \"image\": \"https://images.unsplash.com/photo-1516321310762-97b900d9b0a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80\"\n      }\n    }\n  ]\n}"
+              },
+              "url": {
+                "raw": "{{baseUrl}}/api/landing/industries",
+                "host": ["{{baseUrl}}"],
+                "path": ["api", "landing", "industries"]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Delete Industries",
+            "request": {
+              "method": "DELETE",
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{jwtToken}}"
+                }
+              ],
+              "url": {
+                "raw": "{{baseUrl}}/api/landing/industries",
+                "host": ["{{baseUrl}}"],
+                "path": ["api", "landing", "industries"]
+              }
+            },
+            "response": []
+          }
+        ]
+      }
+    ],
+    "variable": [
+      {
+        "key": "baseUrl",
+        "value": "http://localhost:5005"
+      },
+      {
+        "key": "jwtToken",
+        "value": ""
+      }
+    ]
+  }
