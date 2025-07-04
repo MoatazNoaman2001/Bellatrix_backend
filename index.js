@@ -3,10 +3,11 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import { fileURLToPath } from 'url';
 import path from 'path';
-import authRoutes from './routes/auth.js';
+import authRoutes from './routes/authRoute.js';
 import { errorHandler } from './middleware/errorHandler.js';
-import landingRoutes from './routes/landing.js';
-import seedDatabase from './models/seed.js';
+import landingRoutes from './routes/landingRoute.js';
+import seedDatabase from './models/home/seed.js';
+import implementationRoutes from './routes/implementationRoute.js';
 
 const app = express();
 
@@ -25,6 +26,7 @@ mongoose.connect('mongodb://localhost:27017/Belletrix').then(()=>{
 
 app.use('/api/auth', authRoutes);
 app.use('/api/landing', landingRoutes);
+app.use('/api/implementation', implementationRoutes);
 
 app.use(errorHandler);
 

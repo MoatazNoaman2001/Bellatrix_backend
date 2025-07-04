@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import User from '../models/User.js';
+import User from '../../models/home/User.js';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';

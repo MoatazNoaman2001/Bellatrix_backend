@@ -1,10 +1,10 @@
 import express from 'express';
 const router = express.Router();
-import { getServices, createServices, updateServices, deleteServices } from '../controllers/serviceController.js';
-import { getTestimonials, createTestimonials, updateTestimonials, deleteTestimonials } from '../controllers/testimonialController.js';
-import { createHero, deleteHero, getHero, updateHero } from '../controllers/herocontroller.js';
+import { getServices, createServices, updateServices, deleteServices } from '../controllers/homePageConrollers/serviceController.js';
+import { getTestimonials, createTestimonials, updateTestimonials, deleteTestimonials } from '../controllers/homePageConrollers/testimonialController.js';
+import { createHero, deleteHero, getHero, updateHero } from '../controllers/homePageConrollers/heroController.js';
 import { authenticateToken } from '../middleware/authMiddleware.js';
-import { createIndustries, deleteIndustries, getIndustries, updateIndustries } from '../controllers/industryConroller.js';
+import { createIndustries, deleteIndustries, getIndustries, updateIndustries } from '../controllers/homePageConrollers/industryConroller.js';
 
 router.get('/hero', getHero);
 router.post('/hero',authenticateToken, createHero);

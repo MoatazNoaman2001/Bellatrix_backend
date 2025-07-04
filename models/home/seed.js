@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import Hero from './heroModel.js';
-import Service from './ServiceModel.js';
+import Service from './serviceModel.js';
 import Testimonial from './testimonialModel.js';
 import Industry from './industryModel.js';
 

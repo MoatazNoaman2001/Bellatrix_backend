@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createAdmin, login, uploadImage, getProfile } from '../controllers/authController.js';
+import { createAdmin, login, uploadImage, getProfile } from '../controllers/homePageConrollers/authController.js';
 import { authenticateToken } from '../middleware/authMiddleware.js';
 import { upload } from '../middleware/multerConfig.js';
 

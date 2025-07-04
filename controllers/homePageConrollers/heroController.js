@@ -1,4 +1,4 @@
-import Hero from '../models/heroModel.js';
+import Hero from '../../models/home/heroModel.js';
 
 export const getHero = async (req, res) => {
   try {

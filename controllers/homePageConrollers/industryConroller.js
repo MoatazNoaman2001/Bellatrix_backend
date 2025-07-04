@@ -1,4 +1,4 @@
-import Industry from '../models/industryModel.js';
+import Industry from '../../models/home/industryModel.js';
 
 export const getIndustries = async (req, res) => {
   try {
