@@ -455,87 +455,80 @@
       ]
     },
     {
-      "name": "Hero Section",
+      "name": "Implementation Hero Section",
       "item": [
         {
-          "name": "Get Hero Section",
+          "name": "Get Implementation Hero Section",
           "request": {
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/api/hero-section",
+              "raw": "{{baseUrl}}/api/implementation/hero",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "hero-section"]
+              "path": ["api", "implementation", "hero"]
             }
           },
           "response": []
         },
         {
-          "name": "Create Hero Section",
+          "name": "Create Implementation Hero Section",
           "request": {
             "method": "POST",
             "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{jwtToken}}"
-              }
+              { "key": "Authorization", "value": "Bearer {{jwtToken}}" }
             ],
             "body": {
-              "mode": "raw",
-              "raw": "{\n  \"backgroundVideo\": \"/Videos/HomeHeroSectionV.mp4\",\n  \"titleParts\": [\"Where\", \"Vision\", \"Meets\", \"Reality\"],\n  \"description\": \"We don't just implement solutions—we craft digital experiences that transform the way you do business\",\n  \"ctaButton\": {\n    \"text\": \"Start Implementation\",\n    \"icon\": \"M13 7l5 5m0 0l-5 5m5-5H6\"\n  }\n}"
+              "mode": "formdata",
+              "formdata": [
+                { "key": "media", "type": "file", "src": [] },
+                { "key": "titleParts", "type": "text", "value": "[\"Where\", \"Vision\", \"Meets\", \"Reality\"]" },
+                { "key": "description", "type": "text", "value": "We don't just implement solutions—we craft digital experiences that transform the way you do business" },
+                { "key": "ctaButton", "type": "text", "value": "{\"text\":\"Start Implementation\",\"icon\":\"M13 7l5 5m0 0l-5 5m5-5H6\"}" }
+              ]
             },
             "url": {
-              "raw": "{{baseUrl}}/api/hero-section",
+              "raw": "{{baseUrl}}/api/implementation/hero",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "hero-section"]
+              "path": ["api", "implementation", "hero"]
             }
           },
           "response": []
         },
         {
-          "name": "Update Hero Section",
+          "name": "Update Implementation Hero Section",
           "request": {
             "method": "PATCH",
             "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "Bearer {{jwtToken}}"
-              }
+              { "key": "Authorization", "value": "Bearer {{jwtToken}}" }
             ],
             "body": {
-              "mode": "raw",
-              "raw": "{\n  \"backgroundVideo\": \"/Videos/UpdatedHeroSectionV.mp4\",\n  \"titleParts\": [\"Where\", \"Vision\", \"Meets\", \"Success\"],\n  \"description\": \"Updated digital experiences for your business transformation.\",\n  \"ctaButton\": {\n    \"text\": \"Begin Now\",\n    \"icon\": \"M13 7l5 5m0 0l-5 5m5-5H6\"\n  }\n}"
+              "mode": "formdata",
+              "formdata": [
+                { "key": "media", "type": "file", "src": [] },
+                { "key": "titleParts", "type": "text", "value": "[\"Where\", \"Vision\", \"Meets\", \"Success\"]" },
+                { "key": "description", "type": "text", "value": "Updated digital experiences for your business transformation." },
+                { "key": "ctaButton", "type": "text", "value": "{\"text\":\"Begin Now\",\"icon\":\"M13 7l5 5m0 0l-5 5m5-5H6\"}" }
+              ]
             },
             "url": {
-              "raw": "{{baseUrl}}/api/hero-section",
+              "raw": "{{baseUrl}}/api/implementation/hero",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "hero-section"]
+              "path": ["api", "implementation", "hero"]
             }
           },
           "response": []
         },
         {
-          "name": "Delete Hero Section",
+          "name": "Delete Implementation Hero Section",
           "request": {
             "method": "DELETE",
             "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{jwtToken}}"
-              }
+              { "key": "Authorization", "value": "Bearer {{jwtToken}}" }
             ],
             "url": {
-              "raw": "{{baseUrl}}/api/hero-section",
+              "raw": "{{baseUrl}}/api/implementation/hero",
               "host": ["{{baseUrl}}"],
-              "path": ["api", "hero-section"]
+              "path": ["api", "implementation", "hero"]
             }
           },
           "response": []

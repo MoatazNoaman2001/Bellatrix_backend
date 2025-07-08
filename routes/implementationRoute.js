@@ -6,12 +6,13 @@ import { createWhyChooseSection, deleteWhyChooseSection, getWhyChooseSection, up
 import { createPricingSection, deletePricingSection, getPricingSection, updatePricingSection } from '../controllers/implemenationPageControllers/IprincingSectionContoller.js';
 import { createCtaSection, deleteCtaSection, getCtaSection, updateCtaSection } from '../controllers/implemenationPageControllers/IctaSectionController.js';
 import { createModalContent, deleteModalContent, getModalContent, updateModalContent } from '../controllers/implemenationPageControllers/ImodelSectionController.js';
+import { upload } from '../middleware/multerConfig.js';
 
 const router = express.Router();
 
 router.get('/hero', getHeroSection);
-router.post('/hero', authenticateToken,createHeroSection);
-router.patch('/hero', authenticateToken, updateHeroSection);
+router.post('/hero', authenticateToken, upload.single('media'), createHeroSection);
+router.patch('/hero', authenticateToken, upload.single('media'), updateHeroSection);
 router.delete('/hero', authenticateToken, deleteHeroSection);
 
 router.get('/process', getProcessSection);
@@ -39,6 +40,8 @@ router.get('/modal-content', getModalContent);
 router.post('/modal-content', authenticateToken, createModalContent);
 router.patch('/modal-content', authenticateToken, updateModalContent);
 router.delete('/modal-content', authenticateToken, deleteModalContent);
+
+export default router;
 
 
 

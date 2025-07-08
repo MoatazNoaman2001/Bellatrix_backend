@@ -5,7 +5,9 @@ const trainingProgramSchema = new mongoose.Schema({
   title: String,
   shortDescription: String,
   longDescription: String,
-  icon: String
+  icon: String,
+  // media: String // Path to uploaded image or video file
+  media: String // Path to uploaded image or video file
 }, { _id: false });
 
 const trainingFeatureSchema = new mongoose.Schema({
@@ -15,14 +17,18 @@ const trainingFeatureSchema = new mongoose.Schema({
   detailedDescription: String,
   benefits: [String],
   statistics: mongoose.Schema.Types.Mixed,
-  icon: String
+  icon: String,
+  // media: String // Path to uploaded image or video file
+  media: String // Path to uploaded image or video file
 }, { _id: false });
 
 const keyModuleSchema = new mongoose.Schema({
   title: String,
   description: String,
   duration: String,
-  icon: String
+  icon: String,
+  // media: String // Path to uploaded image or video file
+  media: String // Path to uploaded image or video file
 }, { _id: false });
 
 const heroContentSchema = new mongoose.Schema({

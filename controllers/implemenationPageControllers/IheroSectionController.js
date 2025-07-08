@@ -1,4 +1,5 @@
 import HeroSection from '../../models/implementation/heroModel.js';
+import path from 'path';
 
 export const getHeroSection = async (req, res) => {
   try {
@@ -14,7 +15,12 @@ export const getHeroSection = async (req, res) => {
 
 export const createHeroSection = async (req, res) => {
   try {
-    const heroSection = await HeroSection.create(req.body);
+    let data = req.body;
+    if (typeof data === 'string') data = JSON.parse(data);
+    if (req.file) {
+      data.media = `/Uploads/${req.file.filename}`;
+    }
+    const heroSection = await HeroSection.create(data);
     res.status(201).json(heroSection);
   } catch (error) {
     res.status(400).json({ message: 'Invalid data', error: error.message });
@@ -23,7 +29,12 @@ export const createHeroSection = async (req, res) => {
 
 export const updateHeroSection = async (req, res) => {
   try {
-    const heroSection = await HeroSection.findOneAndUpdate({}, req.body, {
+    let data = req.body;
+    if (typeof data === 'string') data = JSON.parse(data);
+    if (req.file) {
+      data.media = `/Uploads/${req.file.filename}`;
+    }
+    const heroSection = await HeroSection.findOneAndUpdate({}, data, {
       new: true,
       runValidators: true
     });

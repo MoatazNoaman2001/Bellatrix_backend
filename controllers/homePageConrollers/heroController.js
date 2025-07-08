@@ -1,4 +1,5 @@
 import Hero from '../../models/home/heroModel.js';
+import path from 'path';
 
 export const getHero = async (req, res) => {
   try {
@@ -11,7 +12,13 @@ export const getHero = async (req, res) => {
 
 export const createHero = async (req, res) => {
   try {
-    const hero = new Hero(req.body);
+    let data = req.body;
+    if (typeof data === 'string') data = JSON.parse(data);
+    if (req.file) {
+      if (!data.slides) data.slides = [{}];
+      data.slides[0].media = `/Uploads/${req.file.filename}`;
+    }
+    const hero = new Hero(data);
     await hero.save();
     res.status(201).json(hero);
   } catch (error) {
@@ -21,7 +28,13 @@ export const createHero = async (req, res) => {
 
 export const updateHero = async (req, res) => {
   try {
-    const hero = await Hero.findOneAndUpdate({}, req.body, { new: true, upsert: true });
+    let data = req.body;
+    if (typeof data === 'string') data = JSON.parse(data);
+    if (req.file) {
+      if (!data.slides) data.slides = [{}];
+      data.slides[0].media = `/Uploads/${req.file.filename}`;
+    }
+    const hero = await Hero.findOneAndUpdate({}, data, { new: true, upsert: true });
     res.status(200).json(hero);
   } catch (error) {
     res.status(400).json({ error: error.message });

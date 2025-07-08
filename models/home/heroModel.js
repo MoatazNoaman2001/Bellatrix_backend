@@ -4,7 +4,8 @@ const slideSchema = new mongoose.Schema({
   title: String,
   subtitle: String,
   description: String,
-  video: String,
+  // media: String // Path to uploaded image or video file
+  media: String, // Path to uploaded image or video file
   cta: String
 });
 

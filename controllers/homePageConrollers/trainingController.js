@@ -1,4 +1,5 @@
 import Training from '../../models/home/trainingModel.js';
+import path from 'path';
 
 export const getTraining = async (req, res) => {
   try {
@@ -11,7 +12,14 @@ export const getTraining = async (req, res) => {
 
 export const createTraining = async (req, res) => {
   try {
-    const training = new Training(req.body);
+    let data = req.body;
+    if (typeof data === 'string') data = JSON.parse(data);
+    // Handle file upload for heroContent media field only
+    if (req.file) {
+      if (!data.heroContent) data.heroContent = {};
+      data.heroContent.media = `/Uploads/${req.file.filename}`;
+    }
+    const training = new Training(data);
     await training.save();
     res.status(201).json(training);
   } catch (error) {
@@ -21,7 +29,14 @@ export const createTraining = async (req, res) => {
 
 export const updateTraining = async (req, res) => {
   try {
-    const training = await Training.findOneAndUpdate({}, req.body, { new: true, upsert: true });
+    let data = req.body;
+    if (typeof data === 'string') data = JSON.parse(data);
+    // Handle file upload for heroContent media field only
+    if (req.file) {
+      if (!data.heroContent) data.heroContent = {};
+      data.heroContent.media = `/Uploads/${req.file.filename}`;
+    }
+    const training = await Training.findOneAndUpdate({}, data, { new: true, upsert: true });
     res.status(200).json(training);
   } catch (error) {
     res.status(400).json({ error: error.message });

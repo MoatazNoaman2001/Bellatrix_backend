@@ -5,11 +5,12 @@ import { getTestimonials, createTestimonials, updateTestimonials, deleteTestimon
 import { createHero, deleteHero, getHero, updateHero } from '../controllers/homePageConrollers/heroController.js';
 import { authenticateToken } from '../middleware/authMiddleware.js';
 import { createIndustries, deleteIndustries, getIndustries, updateIndustries } from '../controllers/homePageConrollers/industryConroller.js';
+import { upload } from '../middleware/multerConfig.js';
 
 router.get('/hero', getHero);
-router.post('/hero',authenticateToken, createHero);
-router.patch('/hero',authenticateToken, updateHero);
-router.delete('/hero',authenticateToken, deleteHero);
+router.post('/hero', authenticateToken, upload.single('media'), createHero);
+router.patch('/hero', authenticateToken, upload.single('media'), updateHero);
+router.delete('/hero', authenticateToken, deleteHero);
 
 router.get('/services', getServices);
 router.post('/services',authenticateToken, createServices);

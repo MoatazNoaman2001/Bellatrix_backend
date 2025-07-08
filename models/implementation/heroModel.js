@@ -6,7 +6,8 @@ const ctaButtonSchema = new mongoose.Schema({
 });
 
 const heroSectionSchema = new mongoose.Schema({
-  backgroundVideo: String,
+  // media: String // Path to uploaded image or video file
+  media: String, // Path to uploaded image or video file
   titleParts: [String],
   description: String,
   ctaButton: ctaButtonSchema
