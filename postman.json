@@ -981,6 +981,73 @@
           "response": []
         }
       ]
+    },
+    {
+      "name": "Training",
+      "item": [
+        {
+          "name": "Get Training",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/training",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "training"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Training",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{jwtToken}}" }
+            ],
+            "body": { "mode": "raw", "raw": "{ /* training JSON here */ }" },
+            "url": {
+              "raw": "{{baseUrl}}/api/training",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "training"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Training",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{jwtToken}}" }
+            ],
+            "body": { "mode": "raw", "raw": "{ /* training JSON here */ }" },
+            "url": {
+              "raw": "{{baseUrl}}/api/training",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "training"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Training",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{jwtToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/training",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "training"]
+            }
+          },
+          "response": []
+        }
+      ]
     }
   ],
   "variable": [

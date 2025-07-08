@@ -8,6 +8,7 @@ import { errorHandler } from './middleware/errorHandler.js';
 import landingRoutes from './routes/landingRoute.js';
 import seedDatabase from './models/home/seed.js';
 import implementationRoutes from './routes/implementationRoute.js';
+import trainingRoutes from './routes/trainingRoute.js';
 
 const app = express();
 
@@ -27,6 +28,7 @@ mongoose.connect('mongodb://localhost:27017/Belletrix').then(()=>{
 app.use('/api/auth', authRoutes);
 app.use('/api/landing', landingRoutes);
 app.use('/api/implementation', implementationRoutes);
+app.use('/api/training', trainingRoutes);
 
 app.use(errorHandler);
 
