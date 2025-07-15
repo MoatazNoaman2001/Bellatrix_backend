@@ -1,4 +1,4 @@
-import CtaSection from '../ctaSectionModel.js';
+import CtaSection from '../../models/implementation/ctaSectionModel.js';
 
 export const getCtaSection = async (req, res) => {
   try {

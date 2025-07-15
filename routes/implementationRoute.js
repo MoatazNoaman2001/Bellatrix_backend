@@ -1,5 +1,5 @@
 import express from 'express';
-import { createHeroSection, deleteHeroSection, getHeroSection, updateHeroSection } from '../controllers/implemenationPageControllers/IheroSectionController';
+import { createHeroSection, deleteHeroSection, getHeroSection, updateHeroSection } from '../controllers/implemenationPageControllers/IheroSectionController.js';
 import { authenticateToken } from '../middleware/authMiddleware.js';
 import { createProcessSection, deleteProcessSection, getProcessSection, updateProcessSection } from '../controllers/implemenationPageControllers/IprocessSectionController.js';
 import { createWhyChooseSection, deleteWhyChooseSection, getWhyChooseSection, updateWhyChooseSection } from '../controllers/implemenationPageControllers/IwhySectionController.js';
