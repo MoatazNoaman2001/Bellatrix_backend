@@ -7,6 +7,7 @@ import { createPricingSection, deletePricingSection, getPricingSection, updatePr
 import { createCtaSection, deleteCtaSection, getCtaSection, updateCtaSection } from '../controllers/implemenationPageControllers/IctaSectionController.js';
 import { createModalContent, deleteModalContent, getModalContent, updateModalContent } from '../controllers/implemenationPageControllers/ImodelSectionController.js';
 import { upload } from '../middleware/multerConfig.js';
+import { getImplementationPage } from '../controllers/implemenationPageControllers/implementationPageController.js';
 
 const router = express.Router();
 
@@ -40,6 +41,8 @@ router.get('/modal-content', getModalContent);
 router.post('/modal-content', authenticateToken, createModalContent);
 router.patch('/modal-content', authenticateToken, updateModalContent);
 router.delete('/modal-content', authenticateToken, deleteModalContent);
+
+router.get('/all', getImplementationPage);
 
 export default router;
 

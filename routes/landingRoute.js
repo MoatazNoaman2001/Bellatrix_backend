@@ -6,6 +6,7 @@ import { createHero, deleteHero, getHero, updateHero } from '../controllers/home
 import { authenticateToken } from '../middleware/authMiddleware.js';
 import { createIndustries, deleteIndustries, getIndustries, updateIndustries } from '../controllers/homePageConrollers/industryConroller.js';
 import { upload } from '../middleware/multerConfig.js';
+import { getLandingPage } from '../controllers/homePageConrollers/landingController.js';
 
 router.get('/hero', getHero);
 router.post('/hero', authenticateToken, upload.single('media'), createHero);
@@ -26,5 +27,7 @@ router.get('/industries', getIndustries);
 router.post('/industries',authenticateToken, createIndustries);
 router.patch('/industries',authenticateToken, updateIndustries);
 router.delete('/industries',authenticateToken, deleteIndustries);
+
+router.get('/all', getLandingPage);
 
 export default router;

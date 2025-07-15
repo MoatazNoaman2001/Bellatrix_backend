@@ -10,6 +10,7 @@ import seedDatabase from './models/home/seed.js';
 import implementationRoutes from './routes/implementationRoute.js';
 import trainingRoutes from './routes/trainingRoute.js';
 import aboutRoutes from './routes/aboutRoute.js';
+import integerationRoutes from './routes/integerationRoute.js';
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use('/api/landing', landingRoutes);
 app.use('/api/implementation', implementationRoutes);
 app.use('/api/training', trainingRoutes);
 app.use('/api/about', aboutRoutes);
+app.use('/api/integration', integerationRoutes);
 
 app.use(errorHandler);
 
