@@ -1187,6 +1187,160 @@
           "response": []
         }
       ]
+    },
+    {
+      "name": "Consulting",
+      "item": [
+        {
+          "name": "Get Consulting",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/consulting",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "consulting"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Consulting",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{jwtToken}}" }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "media", "type": "file", "src": [] },
+                { "key": "hero", "type": "text", "value": "{\"title\":\"Consulting Hero\",\"subtitle\":\"Subtitle\",\"backgroundImage\":\"/uploads/example.jpg\"}" }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/consulting",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "consulting"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Consulting",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{jwtToken}}" }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "media", "type": "file", "src": [] },
+                { "key": "hero", "type": "text", "value": "{\"title\":\"Updated Consulting Hero\",\"subtitle\":\"Updated Subtitle\",\"backgroundImage\":\"/uploads/example.jpg\"}" }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/consulting",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "consulting"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Consulting",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{jwtToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/consulting",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "consulting"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Payroll",
+      "item": [
+        {
+          "name": "Get Payroll",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/payroll",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "payroll"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Payroll",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{jwtToken}}" }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "media", "type": "file", "src": [] },
+                { "key": "hero", "type": "text", "value": "{\"title\":\"Payroll Hero\",\"subtitle\":\"Subtitle\",\"backgroundImage\":\"/uploads/example.jpg\"}" }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/payroll",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "payroll"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Payroll",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{jwtToken}}" }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "media", "type": "file", "src": [] },
+                { "key": "hero", "type": "text", "value": "{\"title\":\"Updated Payroll Hero\",\"subtitle\":\"Updated Subtitle\",\"backgroundImage\":\"/uploads/example.jpg\"}" }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/payroll",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "payroll"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Payroll",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{jwtToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/payroll",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "payroll"]
+            }
+          },
+          "response": []
+        }
+      ]
     }
   ],
   "variable": [
