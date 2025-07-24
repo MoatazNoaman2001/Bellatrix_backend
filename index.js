@@ -13,6 +13,7 @@ import aboutRoutes from './routes/aboutRoute.js';
 import integerationRoutes from './routes/integerationRoute.js';
 import consultingRoutes from './routes/consultingRoute.js';
 import payrollRoutes from './routes/payrollRoute.js';
+import serviceRoute from './routes/serviceRoute.js'
 
 const app = express();
 
@@ -37,6 +38,7 @@ app.use('/api/about', aboutRoutes);
 app.use('/api/integration', integerationRoutes);
 app.use('/api/consulting', consultingRoutes);
 app.use('/api/payroll', payrollRoutes);
+app.use('/api/services', serviceRoute);
 
 app.use(errorHandler);
 
