@@ -1,6 +1,6 @@
 import express from 'express';
-import { createOrUpdateServiceWithMedia, deleteService, getAllServices, getServiceBySlug, handleMediaUpload, toggleServiceStatus, updateService, updateServiceSection, updateServiceWithMedia, uploadServiceMedia } from '../controllers/ServiceController';
-import { authenticateToken } from '../middleware/authMiddleware';
+import { createOrUpdateServiceWithMedia, deleteService, getAllServices, getServiceBySlug, handleMediaUpload, toggleServiceStatus, updateService, updateServiceSection, updateServiceWithMedia, uploadServiceMedia } from '../controllers/ServiceController.js';
+import { authenticateToken } from '../middleware/authMiddleware.js';
 
 
 const router = express.Router();

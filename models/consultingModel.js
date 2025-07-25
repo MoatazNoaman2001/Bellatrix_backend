@@ -2,10 +2,10 @@ import mongoose from 'mongoose'
 
 
 const heroSchema = new mongoose.Schema({
-    title: string,
-    subtitle: string,
-    description: string,
-    backgroundImage: string
+  title: string,
+  subtitle: string,
+  description: string,
+  backgroundImage: string
 })
 
 const ServiceFeatureSchema = new Schema({
@@ -20,9 +20,9 @@ const ConsultingServiceSchema = new Schema({
   features: [ServiceFeatureSchema]
 });
 const consultingServicesSchema = new mongoose.Schema({
-    title:string,
-    description: string,
-    services: [ServiceDocument]
+  title: string,
+  description: string,
+  services: [ServiceDocument]
 })
 
 const IndustrySolutionSchema = new Schema({
@@ -78,7 +78,7 @@ const ConsultingModelSchema = new Schema({
   updatedAt: { type: Date, default: Date.now }
 });
 
-ConsultingModelSchema.pre('save', function(next) {
+ConsultingModelSchema.pre('save', function (next) {
   this.updatedAt = Date.now();
   next();
 });

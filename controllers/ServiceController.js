@@ -1,6 +1,6 @@
-import Service from '../models/ServiceSection';
+import Service from '../models/ServiceSection.js';
 import multer from 'multer';
-import { uploadMedia, getFileUrl } from '../config/multer';
+import { uploadMedia, getFileUrl } from '../middleware/multerConfig.js';
 
 /**
  * Generates a URL-friendly slug from a name

@@ -1,4 +1,4 @@
-import ConsultingModel from "../models/consultingModel";
+import ConsultingModel from "../models/consultingModel.js";
 
 export const getConsulting = async (req, res) => {
     try {
