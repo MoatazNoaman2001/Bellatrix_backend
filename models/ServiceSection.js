@@ -179,7 +179,7 @@ const serviceSchema = new mongoose.Schema({
   },
   description: { type: String },
   hero: { type: heroSchema, required: true },
-  benefits: { type: benefitsSchema, required: true },
+  benefits: { type: benefitsSchema },
   painPoints: { type: painPointsSchema },
   modules: { type: modulesSchema },
   useCases: { type: useCasesSchema },
@@ -203,7 +203,7 @@ serviceSchema.pre('save', function(next) {
   }
   next();
 
-  
+
 });
 
 const Service = new mongoose.model('Services', serviceSchema);

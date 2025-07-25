@@ -1,6 +1,6 @@
 // seedServices.js
 import mongoose from 'mongoose';
-import Service from './models/ServiceSection.js';
+import Service from '../models/ServiceSection.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -162,7 +162,7 @@ const sampleServices = [
   }
 ];
 
-const seedDatabase = async () => {
+export const seedServiceDatabase = async () => {
   try {
     await mongoose.connect(MONGODB_URI, {
       useNewUrlParser: true,
@@ -185,5 +185,3 @@ const seedDatabase = async () => {
     process.exit(1);
   }
 };
-
-seedDatabase();

@@ -14,6 +14,7 @@ import integerationRoutes from './routes/integerationRoute.js';
 // import consultingRoutes from './routes/consultingRoute.js';
 import payrollRoutes from './routes/payrollRoute.js';
 import serviceRoute from './routes/serviceRoute.js'
+import { seedServiceDatabase } from './seeders/serviceSeed.js';
 
 const app = express();
 
@@ -27,7 +28,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 mongoose.connect('mongodb://localhost:27017/Belletrix').then(()=>{
   console.log('connected to mongodb');
-  
+  // seedServiceDatabase();
 });
 
 app.use('/api/auth', authRoutes);
