@@ -204,6 +204,6 @@ serviceSchema.pre('save', function(next) {
   next();
 });
 
-const Service = mongoose.model('Service', serviceSchema);
+const Service = new mongoose.model('Services', serviceSchema);
 
 export default Service;
