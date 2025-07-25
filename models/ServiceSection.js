@@ -202,6 +202,8 @@ serviceSchema.pre('save', function(next) {
     this.slug = this.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
   }
   next();
+
+  
 });
 
 const Service = new mongoose.model('Services', serviceSchema);
