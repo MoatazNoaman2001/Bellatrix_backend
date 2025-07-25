@@ -28,7 +28,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 mongoose.connect('mongodb://localhost:27017/Belletrix').then(()=>{
   console.log('connected to mongodb');
-  // seedServiceDatabase();
+  seedServiceDatabase();
 });
 
 app.use('/api/auth', authRoutes);

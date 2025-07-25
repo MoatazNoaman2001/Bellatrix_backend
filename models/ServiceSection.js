@@ -1,24 +1,24 @@
 import mongoose from 'mongoose';
 
 const mediaSchema = new mongoose.Schema({
-  type: { type: String, enum: ['video', 'audio', 'image'], required: true },
-  url: { type: String, required: true },
+  type: { type: String, enum: ['video', 'audio', 'image'] },
+  url: { type: String },
   fallback: { type: String },
   alt: { type: String }
 });
 
 const ctaButtonSchema = new mongoose.Schema({
-  text: { type: String, required: true },
-  url: { type: String, required: true },
+  text: { type: String },
+  url: { type: String },
   variant: { type: String, enum: ['primary', 'secondary', 'outline'], default: 'primary' }
 });
 
 const heroSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  subtitle: { type: String, required: true },
-  media: { type: mediaSchema, required: true },
+  title: { type: String },
+  subtitle: { type: String },
+  media: { type: mediaSchema },
   cta: {
-    primary: { type: ctaButtonSchema, required: true },
+    primary: { type: ctaButtonSchema },
     secondary: { type: ctaButtonSchema }
   },
   settings: {
@@ -29,16 +29,16 @@ const heroSchema = new mongoose.Schema({
 });
 
 const benefitItemSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  description: { type: String, required: true },
-  icon: { type: String, required: true },
+  title: { type: String },
+  description: { type: String },
+  icon: { type: String },
   features: [{ type: String }]
 });
 
 const benefitsSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  subtitle: { type: String, required: true },
-  items: [{ type: benefitItemSchema, required: true }],
+  title: { type: String },
+  subtitle: { type: String },
+  items: [{ type: benefitItemSchema }],
   demo: {
     images: [{ type: String }]
   },
@@ -51,13 +51,13 @@ const benefitsSchema = new mongoose.Schema({
 });
 
 const painPointSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  description: { type: String, required: true }
+  title: { type: String },
+  description: { type: String }
 });
 
 const painPointsSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  subtitle: { type: String, required: true },
+  title: { type: String },
+  subtitle: { type: String },
   items: [{ type: painPointSchema }],
   illustration: { type: mediaSchema },
   settings: {
@@ -69,16 +69,16 @@ const painPointsSchema = new mongoose.Schema({
 });
 
 const moduleItemSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  description: { type: String, required: true },
-  icon: { type: String, required: true },
+  title: { type: String },
+  description: { type: String },
+  icon: { type: String },
   features: [{ type: String }]
 });
 
 const modulesSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  subtitle: { type: String, required: true },
-  items: [{ type: moduleItemSchema, required: true }],
+  title: { type: String },
+  subtitle: { type: String },
+  items: [{ type: moduleItemSchema }],
   settings: {
     show: { type: Boolean, default: true },
     layout: { type: String, default: 'grid-cols-3' },
@@ -88,15 +88,15 @@ const modulesSchema = new mongoose.Schema({
 });
 
 const useCaseSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  description: { type: String, required: true },
-  icon: { type: String, required: true }
+  title: { type: String },
+  description: { type: String },
+  icon: { type: String }
 });
 
 const useCasesSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  subtitle: { type: String, required: true },
-  items: [{ type: useCaseSchema, required: true }],
+  title: { type: String },
+  subtitle: { type: String },
+  items: [{ type: useCaseSchema }],
   settings: {
     show: { type: Boolean, default: true },
     layout: { type: String, default: 'grid-cols-4' },
@@ -106,19 +106,19 @@ const useCasesSchema = new mongoose.Schema({
 });
 
 const pricingPlanSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  description: { type: String, required: true },
-  price: { type: String, required: true },
+  name: { type: String },
+  description: { type: String },
+  price: { type: String },
   priceNote: { type: String },
-  features: [{ type: String, required: true }],
-  cta: { type: ctaButtonSchema, required: true },
+  features: [{ type: String }],
+  cta: { type: ctaButtonSchema },
   highlight: { type: Boolean, default: false }
 });
 
 const pricingSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  subtitle: { type: String, required: true },
-  plans: [{ type: pricingPlanSchema, required: true }],
+  title: { type: String },
+  subtitle: { type: String },
+  plans: [{ type: pricingPlanSchema }],
   settings: {
     show: { type: Boolean, default: true },
     disclaimer: { type: String },
@@ -129,13 +129,13 @@ const pricingSchema = new mongoose.Schema({
 });
 
 const faqItemSchema = new mongoose.Schema({
-  question: { type: String, required: true },
-  answer: { type: String, required: true }
+  question: { type: String },
+  answer: { type: String }
 });
 
 const faqSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  items: [{ type: faqItemSchema, required: true }],
+  title: { type: String },
+  items: [{ type: faqItemSchema }],
   settings: {
     show: { type: Boolean, default: true },
     expandMultiple: { type: Boolean, default: false },
@@ -146,9 +146,9 @@ const faqSchema = new mongoose.Schema({
 });
 
 const ctaSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  subtitle: { type: String, required: true },
-  buttons: [{ type: ctaButtonSchema, required: true }],
+  title: { type: String },
+  subtitle: { type: String },
+  buttons: [{ type: ctaButtonSchema }],
   settings: {
     show: { type: Boolean, default: true },
     theme: { type: String, default: 'light' },
@@ -178,7 +178,7 @@ const serviceSchema = new mongoose.Schema({
     trim: true
   },
   description: { type: String },
-  hero: { type: heroSchema, required: true },
+  hero: { type: heroSchema },
   benefits: { type: benefitsSchema },
   painPoints: { type: painPointsSchema },
   modules: { type: modulesSchema },
