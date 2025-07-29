@@ -1,5 +1,5 @@
 import express from 'express';
-import { createOrUpdateServiceWithMedia, deleteService, getAllServices, getServiceBySlug, handleMediaUpload, toggleServiceStatus, updateService, updateServiceSection, updateServiceWithMedia, uploadServiceMedia } from '../controllers/ServiceController.js';
+import { createOrUpdateSolutionWithMedia, deleteSolution, getAllSolutions, getSolutionBySlug, handleMediaUpload, toggleSolutionStatus, updateSolution, updateSolutionSection, updateSolutionWithMedia, uploadSolutionMedia } from '../controllers/SolutionController.js';
 import { authenticateToken } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
@@ -7,8 +7,8 @@ const router = express.Router();
 /**
  * @swagger
  * tags:
- *   name: Services
- *   description: Service management endpoints
+ *   name: Solutions
+ *   description: Solution management endpoints
  */
 
 /**
@@ -17,7 +17,7 @@ const router = express.Router();
  *   get:
  *     summary: Get all services
  *     description: Retrieve a paginated list of active services
- *     tags: [Services]
+ *     tags: [Solutions]
  *     parameters:
  *       - in: query
  *         name: page
@@ -48,7 +48,7 @@ const router = express.Router();
  *         description: Sort order
  *     responses:
  *       200:
- *         description: Services retrieved successfully
+ *         description: Solutions retrieved successfully
  *         content:
  *           application/json:
  *             schema:
@@ -57,14 +57,14 @@ const router = express.Router();
  *                 services:
  *                   type: array
  *                   items:
- *                     $ref: '#/components/schemas/Service'
+ *                     $ref: '#/components/schemas/Solution'
  *                 totalPages:
  *                   type: integer
  *                   description: Total number of pages
  *                 currentPage:
  *                   type: integer
  *                   description: Current page number
- *                 totalServices:
+ *                 totalSolutions:
  *                   type: integer
  *                   description: Total number of services
  *       500:
@@ -74,7 +74,7 @@ const router = express.Router();
  *             schema:
  *               $ref: '#/components/schemas/Error'
  */
-router.get('/', getAllServices);
+router.get('/', getAllSolutions);
 
 /**
  * @swagger
@@ -82,24 +82,24 @@ router.get('/', getAllServices);
  *   get:
  *     summary: Get service by slug
  *     description: Retrieve a specific service by its slug
- *     tags: [Services]
+ *     tags: [Solutions]
  *     parameters:
  *       - in: path
  *         name: slug
  *         required: true
  *         schema:
  *           type: string
- *         description: Service slug (URL-friendly identifier)
+ *         description: Solution slug (URL-friendly identifier)
  *         example: "hr-management"
  *     responses:
  *       200:
- *         description: Service found
+ *         description: Solution found
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Service'
+ *               $ref: '#/components/schemas/Solution'
  *       404:
- *         description: Service not found
+ *         description: Solution not found
  *         content:
  *           application/json:
  *             schema:
@@ -111,7 +111,7 @@ router.get('/', getAllServices);
  *             schema:
  *               $ref: '#/components/schemas/Error'
  */
-router.get('/:slug', getServiceBySlug);
+router.get('/:slug', getSolutionBySlug);
 
 /**
  * @swagger
@@ -119,7 +119,7 @@ router.get('/:slug', getServiceBySlug);
  *   post:
  *     summary: Create a new service
  *     description: Create a new service with optional media upload
- *     tags: [Services]
+ *     tags: [Solutions]
  *     security:
  *       - bearerAuth: []
  *     requestBody:
@@ -133,11 +133,11 @@ router.get('/:slug', getServiceBySlug);
  *             properties:
  *               name:
  *                 type: string
- *                 description: Service name
+ *                 description: Solution name
  *                 example: "HR Management"
  *               description:
  *                 type: string
- *                 description: Service description
+ *                 description: Solution description
  *                 example: "Complete HR solution for businesses"
  *               mediaSection:
  *                 type: string
@@ -179,11 +179,11 @@ router.get('/:slug', getServiceBySlug);
  *                 description: Modules section configuration
  *     responses:
  *       200:
- *         description: Service created successfully
+ *         description: Solution created successfully
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Service'
+ *               $ref: '#/components/schemas/Solution'
  *       400:
  *         description: Invalid input data
  *         content:
@@ -203,7 +203,7 @@ router.get('/:slug', getServiceBySlug);
  *             schema:
  *               $ref: '#/components/schemas/Error'
  */
-router.post('/', authenticateToken, handleMediaUpload, createOrUpdateServiceWithMedia);
+router.post('/', authenticateToken, handleMediaUpload, createOrUpdateSolutionWithMedia);
 
 /**
  * @swagger
@@ -211,7 +211,7 @@ router.post('/', authenticateToken, handleMediaUpload, createOrUpdateServiceWith
  *   patch:
  *     summary: Update service
  *     description: Update service information (without media)
- *     tags: [Services]
+ *     tags: [Solutions]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -220,7 +220,7 @@ router.post('/', authenticateToken, handleMediaUpload, createOrUpdateServiceWith
  *         required: true
  *         schema:
  *           type: string
- *         description: Service slug
+ *         description: Solution slug
  *     requestBody:
  *       required: true
  *       content:
@@ -242,13 +242,13 @@ router.post('/', authenticateToken, handleMediaUpload, createOrUpdateServiceWith
  *                 type: object
  *     responses:
  *       200:
- *         description: Service updated successfully
+ *         description: Solution updated successfully
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Service'
+ *               $ref: '#/components/schemas/Solution'
  *       404:
- *         description: Service not found
+ *         description: Solution not found
  *         content:
  *           application/json:
  *             schema:
@@ -266,7 +266,7 @@ router.post('/', authenticateToken, handleMediaUpload, createOrUpdateServiceWith
  *             schema:
  *               $ref: '#/components/schemas/Error'
  */
-router.patch('/:slug', authenticateToken, updateService);
+router.patch('/:slug', authenticateToken, updateSolution);
 
 /**
  * @swagger
@@ -274,7 +274,7 @@ router.patch('/:slug', authenticateToken, updateService);
  *   patch:
  *     summary: Toggle service status
  *     description: Activate or deactivate a service
- *     tags: [Services]
+ *     tags: [Solutions]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -283,10 +283,10 @@ router.patch('/:slug', authenticateToken, updateService);
  *         required: true
  *         schema:
  *           type: string
- *         description: Service slug
+ *         description: Solution slug
  *     responses:
  *       200:
- *         description: Service status updated
+ *         description: Solution status updated
  *         content:
  *           application/json:
  *             schema:
@@ -294,12 +294,12 @@ router.patch('/:slug', authenticateToken, updateService);
  *               properties:
  *                 message:
  *                   type: string
- *                   example: "Service activated"
+ *                   example: "Solution activated"
  *                 isActive:
  *                   type: boolean
  *                   example: true
  *       404:
- *         description: Service not found
+ *         description: Solution not found
  *         content:
  *           application/json:
  *             schema:
@@ -311,7 +311,7 @@ router.patch('/:slug', authenticateToken, updateService);
  *             schema:
  *               $ref: '#/components/schemas/Error'
  */
-router.patch('/:slug/status', authenticateToken, toggleServiceStatus);
+router.patch('/:slug/status', authenticateToken, toggleSolutionStatus);
 
 /**
  * @swagger
@@ -319,7 +319,7 @@ router.patch('/:slug/status', authenticateToken, toggleServiceStatus);
  *   delete:
  *     summary: Delete service
  *     description: Permanently delete a service
- *     tags: [Services]
+ *     tags: [Solutions]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -328,10 +328,10 @@ router.patch('/:slug/status', authenticateToken, toggleServiceStatus);
  *         required: true
  *         schema:
  *           type: string
- *         description: Service slug
+ *         description: Solution slug
  *     responses:
  *       200:
- *         description: Service deleted successfully
+ *         description: Solution deleted successfully
  *         content:
  *           application/json:
  *             schema:
@@ -339,9 +339,9 @@ router.patch('/:slug/status', authenticateToken, toggleServiceStatus);
  *               properties:
  *                 message:
  *                   type: string
- *                   example: "Service removed"
+ *                   example: "Solution removed"
  *       404:
- *         description: Service not found
+ *         description: Solution not found
  *         content:
  *           application/json:
  *             schema:
@@ -353,6 +353,6 @@ router.patch('/:slug/status', authenticateToken, toggleServiceStatus);
  *             schema:
  *               $ref: '#/components/schemas/Error'
  */
-router.delete('/:slug', authenticateToken, deleteService);
+router.delete('/:slug', authenticateToken, deleteSolution);
 
 export default router;

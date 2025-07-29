@@ -12,8 +12,8 @@ import trainingRoutes from './routes/trainingRoute.js';
 import aboutRoutes from './routes/aboutRoute.js';
 import integerationRoutes from './routes/integerationRoute.js';
 import payrollRoutes from './routes/payrollRoute.js';
-import serviceRoute from './routes/serviceRoute.js'
-import { seedServiceDatabase } from './seeders/serviceSeed.js';
+import serviceRoute from './routes/solutionRoute.js'
+import { seedSolutionDatabase } from './seeders/solutionSeed.js';
 
 // Swagger imports
 import { specs, swaggerUi, swaggerOptions } from './swagger.js';
@@ -81,7 +81,7 @@ app.use(errorHandler);
 // Database connection and seeding
 mongoose.connect('mongodb://localhost:27017/Belletrix').then(() => {
   console.log('Connected to MongoDB');
-  // seedServiceDatabase();
+  seedSolutionDatabase();
 });
 
 const PORT = process.env.PORT || 5005;

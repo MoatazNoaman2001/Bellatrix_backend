@@ -1,4 +1,4 @@
-import Service from '../models/ServiceSection.js';
+import Solution from '../models/SolutionSection.js';
 import multer from 'multer';
 import { uploadMedia, getFileUrl } from '../middleware/multerConfig.js';
 
@@ -41,55 +41,55 @@ export const handleMediaUpload = async (req, res, next) => {
 
 /**
  * Creates or updates a service with media
- * @route POST/PATCH /api/services
+ * @route POST/PATCH /api/solutions
  * @access Private/Admin
  */
-export const createOrUpdateServiceWithMedia = async (req, res) => {
+export const createOrUpdateSolutionWithMedia = async (req, res) => {
   try {
-    let serviceData = req.body;
+    let solutionData = req.body;
     
     if (req.mediaUrl) {
       const mediaSection = req.body.mediaSection || 'hero';
-      serviceData[mediaSection] = serviceData[mediaSection] || {};
-      serviceData[mediaSection].media = {
+      solutionData[mediaSection] = solutionData[mediaSection] || {};
+      solutionData[mediaSection].media = {
         type: req.file.mimetype.startsWith('video/') ? 'video' : 'image',
         url: req.mediaUrl,
         fallback: req.body.fallbackColor || '#001038',
-        alt: req.body.altText || 'Service media'
+        alt: req.body.altText || 'Solution media'
       };
     }
 
     if (req.files && req.files.length > 0) {
       const demoImages = req.files.map(file => getFileUrl(req, file.filename));
-      serviceData.demo = serviceData.demo || {};
-      serviceData.demo.images = demoImages;
+      solutionData.demo = solutionData.demo || {};
+      solutionData.demo.images = demoImages;
     }
 
     let service;
     if (req.params.slug) {
-      service = await Service.findOneAndUpdate(
+      service = await Solution.findOneAndUpdate(
         { slug: req.params.slug },
-        { $set: serviceData },
+        { $set: solutionData },
         { new: true, runValidators: true }
       );
     } else {
-      service = new Service(serviceData);
+      service = new Solution(solutionData);
       await service.save();
     }
     
     res.status(200).json(service);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: 'Server Error' });
+    res.status(500).json({ message: 'Solution Error' });
   }
 };
 
 /**
  * Uploads media for a specific service section
- * @route PATCH /api/services/:slug/media
+ * @route PATCH /api/solutions/:slug/media
  * @access Private/Admin
  */
-export const uploadServiceMedia = async (req, res) => {
+export const uploadSolutionMedia = async (req, res) => {
   try {
     const { slug } = req.params;
     const { section, altText, fallbackColor } = req.body;
@@ -109,30 +109,30 @@ export const uploadServiceMedia = async (req, res) => {
       }
     };
 
-    const updatedService = await Service.findOneAndUpdate(
+    const updatedSolution = await Solution.findOneAndUpdate(
       { slug },
       { $set: updateData },
       { new: true }
     );
 
-    if (!updatedService) {
-      return res.status(404).json({ message: 'Service not found' });
+    if (!updatedSolution) {
+      return res.status(404).json({ message: 'Solution not found' });
     }
 
-    res.json(updatedService);
+    res.json(updatedSolution);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: 'Server Error' });
+    res.status(500).json({ message: 'Solution Error' });
   }
 };
 
 /**
  * Gets all active services
- * @route GET /api/services
+ * @route GET /api/solutions
  * @access Public
  * @returns {Array} List of services
  */
-export const getAllServices = async (req, res) => {
+export const getAllSolutions = async (req, res) => {
    try {
      // Get query parameters for filtering/pagination
      const { page = 1, limit = 10, sort = '-createdAt', search = '' } = req.query;
@@ -149,7 +149,7 @@ export const getAllServices = async (req, res) => {
      }
  
      // Execute the query with pagination
-     const services = await Service.find(query)
+     const services = await Solution.find(query)
        .select('-__v')
        .sort(sort)
        .limit(limit * 1)
@@ -157,14 +157,14 @@ export const getAllServices = async (req, res) => {
        .exec();
  
      // Get total count for pagination info
-     const count = await Service.countDocuments(query);
+     const count = await Solution.countDocuments(query);
  
      // Return response with pagination info
      res.json({
        services,
        totalPages: Math.ceil(count / limit),
        currentPage: page,
-       totalServices: count
+       totalSolutions: count
      });
    } catch (err) {
      console.error(err);
@@ -174,15 +174,15 @@ export const getAllServices = async (req, res) => {
   
 /**
  * Gets a service by its slug
- * @route GET /api/services/:slug
+ * @route GET /api/solutions/:slug
  * @access Public
  */
-export const getServiceBySlug = async (req, res) => {
+export const getSolutionBySlug = async (req, res) => {
   try {
-    const service = await Service.findOne({ slug: req.params.slug }).select('-__v');
+    const service = await Solution.findOne({ slug: req.params.slug }).select('-__v');
     
     if (!service) {
-      return res.status(404).json({ message: 'Service not found' });
+      return res.status(404).json({ message: 'Solution not found' });
     }
     
     res.json(service);
@@ -194,10 +194,10 @@ export const getServiceBySlug = async (req, res) => {
 
 /**
  * Updates a service (without media)
- * @route PATCH /api/services/:slug
+ * @route PATCH /api/solutions/:slug
  * @access Private/Admin
  */
-export const updateService = async (req, res) => {
+export const updateSolution = async (req, res) => {
   try {
     const { slug } = req.params;
     const { name } = req.body;
@@ -207,17 +207,17 @@ export const updateService = async (req, res) => {
       updateSlug = generateSlug(name);
     }
     
-    const updatedService = await Service.findOneAndUpdate(
+    const updatedSolution = await Solution.findOneAndUpdate(
       { slug },
       { ...req.body, slug: updateSlug },
       { new: true, runValidators: true }
     ).select('-__v');
     
-    if (!updatedService) {
-      return res.status(404).json({ message: 'Service not found' });
+    if (!updatedSolution) {
+      return res.status(404).json({ message: 'Solution not found' });
     }
     
-    res.json(updatedService);
+    res.json(updatedSolution);
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Server Error' });
@@ -226,42 +226,42 @@ export const updateService = async (req, res) => {
 
 /**
  * Updates a service with media
- * @route PATCH /api/services/:slug/with-media
+ * @route PATCH /api/solutions/:slug/with-media
  * @access Private/Admin
  */
-export const updateServiceWithMedia = async (req, res) => {
+export const updateSolutionWithMedia = async (req, res) => {
   try {
     const { slug } = req.params;
-    let serviceData = req.body;
+    let solutionData = req.body;
     
     if (req.mediaUrl) {
       const mediaSection = req.body.mediaSection || 'hero';
-      serviceData[mediaSection] = serviceData[mediaSection] || {};
-      serviceData[mediaSection].media = {
+      solutionData[mediaSection] = solutionData[mediaSection] || {};
+      solutionData[mediaSection].media = {
         type: req.file.mimetype.startsWith('video/') ? 'video' : 'image',
         url: req.mediaUrl,
         fallback: req.body.fallbackColor || '#001038',
-        alt: req.body.altText || 'Service media'
+        alt: req.body.altText || 'Solution media'
       };
     }
 
     if (req.files && req.files.length > 0) {
       const demoImages = req.files.map(file => getFileUrl(req, file.filename));
-      serviceData.demo = serviceData.demo || {};
-      serviceData.demo.images = demoImages;
+      solutionData.demo = solutionData.demo || {};
+      solutionData.demo.images = demoImages;
     }
 
-    const updatedService = await Service.findOneAndUpdate(
+    const updatedSolution = await Solution.findOneAndUpdate(
       { slug },
-      { $set: serviceData },
+      { $set: solutionData },
       { new: true, runValidators: true }
     );
 
-    if (!updatedService) {
-      return res.status(404).json({ message: 'Service not found' });
+    if (!updatedSolution) {
+      return res.status(404).json({ message: 'Solution not found' });
     }
 
-    res.json(updatedService);
+    res.json(updatedSolution);
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Server Error' });
@@ -273,7 +273,7 @@ export const updateServiceWithMedia = async (req, res) => {
  * @route PATCH /api/services/:slug/sections/:section
  * @access Private/Admin
  */
-export const updateServiceSection = async (req, res) => {
+export const updateSolutionSection = async (req, res) => {
   try {
     const { slug, section } = req.params;
     
@@ -289,17 +289,17 @@ export const updateServiceSection = async (req, res) => {
     const updateData = {};
     updateData[section] = req.body;
     
-    const updatedService = await Service.findOneAndUpdate(
+    const updatedSolution = await Solution.findOneAndUpdate(
       { slug },
       { $set: updateData },
       { new: true, runValidators: true }
     ).select('-__v');
     
-    if (!updatedService) {
-      return res.status(404).json({ message: 'Service not found' });
+    if (!updatedSolution) {
+      return res.status(404).json({ message: 'Solution not found' });
     }
     
-    res.json(updatedService);
+    res.json(updatedSolution);
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Server Error' });
@@ -308,23 +308,23 @@ export const updateServiceSection = async (req, res) => {
 
 /**
  * Toggles a service's active status
- * @route PATCH /api/services/:slug/status
+ * @route PATCH /api/solution/:slug/status
  * @access Private/Admin
  */
-export const toggleServiceStatus = async (req, res) => {
+export const toggleSolutionStatus = async (req, res) => {
   try {
-    const service = await Service.findOne({ slug: req.params.slug });
+    const solution = await Solution.findOne({ slug: req.params.slug });
     
-    if (!service) {
-      return res.status(404).json({ message: 'Service not found' });
+    if (!solution) {
+      return res.status(404).json({ message: 'Solution not found' });
     }
     
-    service.isActive = !service.isActive;
-    await service.save();
+    solution.isActive = !solution.isActive;
+    await solution.save();
     
     res.json({
-      message: `Service ${service.isActive ? 'activated' : 'deactivated'}`,
-      isActive: service.isActive
+      message: `Solution ${solution.isActive ? 'activated' : 'deactivated'}`,
+      isActive: solution.isActive
     });
   } catch (err) {
     console.error(err);
@@ -334,20 +334,20 @@ export const toggleServiceStatus = async (req, res) => {
 
 /**
  * Deletes a service
- * @route DELETE /api/services/:slug
+ * @route DELETE /api/solutions/:slug
  * @access Private/Admin
  */
-export const deleteService = async (req, res) => {
+export const deleteSolution = async (req, res) => {
   try {
-    const deletedService = await Service.findOneAndDelete({ slug: req.params.slug });
+    const deletedSolution = await Solution.findOneAndDelete({ slug: req.params.slug });
     
-    if (!deletedService) {
-      return res.status(404).json({ message: 'Service not found' });
+    if (!deletedSolution) {
+      return res.status(404).json({ message: 'Solution not found' });
     }
     
-    res.json({ message: 'Service removed' });
+    res.json({ message: 'Solution removed' });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: 'Server Error' });
+    res.status(500).json({ message: 'Solution Error' });
   }
 };

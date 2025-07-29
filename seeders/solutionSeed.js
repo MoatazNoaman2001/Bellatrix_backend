@@ -1,12 +1,12 @@
 import mongoose from 'mongoose';
-import Service from '../models/ServiceSection.js';
+import Solution from '../models/SolutionSection.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/Belletrix';
 
-const sampleServices = [
+const sampleSolutions = [
   {
     name: "HR Management",
     slug: "hr-management",
@@ -17,7 +17,7 @@ const sampleServices = [
       subtitle: "Automate HR, empower employees, and stay compliant—on one secure platform.",
       media: {
         type: "video",
-        url: "https://example.com/videos/hr-platform-overview.mp4",
+        url: "https://drive.google.com/file/d/1LuHKH3f8D6zYVLy4gdVueWVu1pBjlIlx/view?usp=sharing",
         fallback: "#001038",
         alt: "HR platform overview video"
       },
@@ -46,19 +46,61 @@ const sampleServices = [
           title: "Payroll Automation",
           description: "Automate payroll processing, tax calculations, and compliance with ease.",
           icon: "payroll",
-          features: ["Tax compliance", "Auto calculations"]
+          features: [
+            "Tax compliance",
+            "Auto calculations"
+          ]
         },
         {
           title: "Centralized Employee Data",
           description: "All employee records, contracts, and documents in one secure place.",
           icon: "database",
-          features: ["Secure storage", "Easy access"]
+          features: [
+            "Secure storage",
+            "Easy access"
+          ]
+        },
+        {
+          title: "Streamlined Onboarding",
+          description: "Digitize onboarding for new hires with checklists and e-signatures.",
+          icon: "onboarding",
+          features: [
+            "Checklists",
+            "E-signatures"
+          ]
+        },
+        {
+          title: "Real-Time Performance Tracking",
+          description: "Monitor goals, feedback, and reviews in real time.",
+          icon: "performance",
+          features: [
+            "Goal tracking",
+            "Feedback system"
+          ]
+        },
+        {
+          title: "Attendance & Leave",
+          description: "Track attendance, shifts, and leave requests with built-in workflows.",
+          icon: "attendance",
+          features: [
+            "Shift management",
+            "Leave tracking"
+          ]
+        },
+        {
+          title: "Data Security",
+          description: "Enterprise-grade security and GDPR compliance.",
+          icon: "security",
+          features: [
+            "GDPR compliant",
+            "Encryption"
+          ]
         }
       ],
       demo: {
         images: [
-          "https://example.com/images/hr-dashboard-1.png",
-          "https://example.com/images/hr-dashboard-2.png"
+          "/images/Hr/hrS1.png",
+          "/images/Hr/hrS2.jpeg"
         ]
       },
       settings: {
@@ -66,6 +108,34 @@ const sampleServices = [
         layout: "grid-cols-3",
         theme: "light",
         animation: "fade-in"
+      }
+    },
+    painPoints: {
+      title: "HR Challenges We Solve",
+      subtitle: "Common HR pain points our platform addresses",
+      items: [
+        {
+          title: "Manual Processes",
+          description: "Eliminate time-consuming manual HR tasks"
+        },
+        {
+          title: "Compliance Risks",
+          description: "Stay compliant with changing labor laws"
+        },
+        {
+          title: "Data Silos",
+          description: "Break down information barriers between departments"
+        }
+      ],
+      illustration: {
+        url: "",
+        alt: ""
+      },
+      settings: {
+        show: false,
+        layout: "split",
+        theme: "light",
+        animation: "none"
       }
     },
     modules: {
@@ -76,13 +146,46 @@ const sampleServices = [
           title: "Employee Management",
           description: "Manage profiles, roles, and lifecycle events.",
           icon: "employee",
-          features: ["Profile management", "Document storage"]
+          features: [
+            "Profile management",
+            "Document storage"
+          ]
+        },
+        {
+          title: "Attendance",
+          description: "Automated time tracking, leave, and shift management.",
+          icon: "attendance",
+          features: [
+            "Time tracking",
+            "Leave management"
+          ]
         },
         {
           title: "Payroll",
           description: "End-to-end payroll with tax, benefits, and payslip generation.",
           icon: "payroll",
-          features: ["Tax calculations", "Payslip generation"]
+          features: [
+            "Tax calculations",
+            "Payslip generation"
+          ]
+        },
+        {
+          title: "Recruitment",
+          description: "Job postings, applicant tracking, and interview scheduling.",
+          icon: "recruitment",
+          features: [
+            "Applicant tracking",
+            "Interview scheduling"
+          ]
+        },
+        {
+          title: "Compliance",
+          description: "Built-in legal, tax, and labor compliance for multiple regions.",
+          icon: "compliance",
+          features: [
+            "Legal compliance",
+            "Tax compliance"
+          ]
         }
       ],
       settings: {
@@ -90,6 +193,72 @@ const sampleServices = [
         layout: "grid-cols-3",
         theme: "dark",
         animation: "fade-in"
+      }
+    },
+    howItWorks: {
+      title: "How Our HR System Works",
+      description: "Step-by-step explanation of our HR system workflow",
+      steps: [],
+      settings: {
+        show: false,
+        theme: "dark",
+        animation: "none",
+        layout: "stepper"
+      }
+    },
+    useCases: {
+      title: "Who Is It For?",
+      subtitle: "Our HR solution is designed for businesses of all sizes and industries",
+      items: [
+        {
+          title: "Startups",
+          description: "Scale your team fast with automated HR and payroll.",
+          icon: "startup"
+        },
+        {
+          title: "Enterprises",
+          description: "Centralize HR operations across multiple locations.",
+          icon: "enterprise"
+        },
+        {
+          title: "Remote Teams",
+          description: "Seamless onboarding, time tracking, and compliance for distributed teams.",
+          icon: "remote"
+        },
+        {
+          title: "SMBs",
+          description: "Affordable, all-in-one HR for growing businesses.",
+          icon: "smb"
+        }
+      ],
+      settings: {
+        show: true,
+        layout: "grid-cols-4",
+        theme: "light",
+        animation: "fade-in"
+      }
+    },
+    workflow: {
+      title: "HR System Workflow",
+      subtitle: "Visual representation of our HR system's core processes",
+      stepTitle: "Core Workflow",
+      items: [],
+      settings: {
+        show: false,
+        layout: "stepper",
+        theme: "light",
+        animation: "none"
+      }
+    },
+    features: {
+      title: "Key HR Features",
+      subtitle: "Explore the powerful features of our HR platform",
+      items: [],
+      settings: {
+        show: false,
+        layout: "grid-cols-3",
+        theme: "light",
+        animation: "none"
       }
     },
     pricing: {
@@ -101,25 +270,56 @@ const sampleServices = [
           description: "Perfect for small businesses",
           price: "$2,500",
           priceNote: "starting from",
-          features: ["Basic system analysis", "Standard implementation"],
+          features: [
+            "Basic system analysis",
+            "Standard implementation",
+            "Basic testing & QA",
+            "30 days support",
+            "Email support"
+          ],
           cta: {
             text: "Get Started",
-            url: "#contact",
-            variant: "primary"
+            url: "#contact"
           },
           highlight: false
+        },
+        {
+          name: "Professional",
+          description: "Ideal for growing companies",
+          price: "$5,000",
+          priceNote: "starting from",
+          features: [
+            "Comprehensive analysis",
+            "Custom implementation",
+            "Advanced testing & QA",
+            "90 days support",
+            "Phone & email support",
+            "Training sessions"
+          ],
+          cta: {
+            text: "Get Started",
+            url: "#contact"
+          },
+          highlight: true
         },
         {
           name: "Enterprise",
           description: "For large organizations",
           price: "Custom",
           priceNote: "pricing",
-          features: ["Enterprise-grade analysis", "Fully customized solution"],
+          features: [
+            "Enterprise-grade analysis",
+            "Fully customized solution",
+            "Comprehensive testing",
+            "Unlimited support",
+            "24/7 dedicated support",
+            "On-site training"
+          ],
           cta: {
             text: "Contact Sales",
             url: "#contact"
           },
-          highlight: true
+          highlight: false
         }
       ],
       settings: {
@@ -129,66 +329,69 @@ const sampleServices = [
         theme: "dark",
         animation: "none"
       }
-    }
-  },
-  {
-    name: "Accounting Software",
-    slug: "accounting-software",
-    description: "Comprehensive accounting solution for businesses",
-    isActive: true,
-    hero: {
-      title: "Smart Accounting Solution",
-      subtitle: "Automate your finances with our powerful accounting platform",
-      media: {
-        type: "image",
-        url: "https://example.com/images/accounting-hero.jpg",
-        fallback: "#1a237e",
-        alt: "Accounting software dashboard"
-      },
-      cta: {
-        primary: {
-          text: "Start Free Trial",
-          url: "#trial",
-          variant: "primary"
-        }
-      },
-      settings: {
-        show: true,
-        animation: "fade-in",
-        layout: "centered"
-      }
     },
-    benefits: {
-      title: "Why Choose Our Accounting Solution?",
-      subtitle: "Streamline your financial operations with these key benefits.",
+    faq: {
+      title: "Frequently Asked Questions",
       items: [
         {
-          title: "Automated Bookkeeping",
-          description: "Simplify your bookkeeping with automated transaction tracking.",
-          icon: "bookkeeping",
-          features: ["Transaction tracking", "Real-time reporting"]
+          question: "Is my data secure?",
+          answer: "Yes. We use enterprise-grade encryption, regular audits, and are GDPR compliant."
         },
         {
-          title: "Tax Compliance",
-          description: "Stay compliant with automated tax calculations and reporting.",
-          icon: "tax",
-          features: ["Tax automation", "Compliance reports"]
+          question: "Can I integrate with my payroll/accounting software?",
+          answer: "Yes. We offer integrations with major payroll, accounting, and ERP systems."
+        },
+        {
+          question: "How long does onboarding take?",
+          answer: "Most customers are up and running in under a week with our guided onboarding."
+        },
+        {
+          question: "Is there a free trial?",
+          answer: "Yes, you can start with a 14-day free trial. No credit card required."
+        },
+        {
+          question: "Do you offer multi-language support?",
+          answer: "Yes, our platform supports English, Arabic, and French."
         }
       ],
-      demo: {
-        images: [
-          "https://example.com/images/accounting-dashboard-1.png",
-          "https://example.com/images/accounting-dashboard-2.png"
-        ]
-      },
       settings: {
         show: true,
-        layout: "grid-cols-3",
+        expandMultiple: false,
+        layout: "list",
         theme: "light",
         animation: "fade-in"
       }
+    },
+    cta: {
+      title: "Ready to Transform Your HR?",
+      subtitle: "Start your free trial or book a personalized demo with our experts today.",
+      buttons: [
+        {
+          text: "Book Now",
+          url: "#demo",
+          variant: "outline"
+        },
+        {
+          text: "Contact Sales",
+          url: "#contact",
+          variant: "primary"
+        }
+      ],
+      settings: {
+        show: true,
+        theme: "light",
+        layout: "center",
+        animation: "fade-in"
+      }
+    },
+    demo: {
+      images: [],
+      settings: {
+        show: false
+      }
     }
   },
+
   {
     name: "Payroll System",
     slug: "payroll-system",
@@ -456,7 +659,7 @@ const sampleServices = [
           features: []
         },
         {
-          title: "Employee Self-Service",
+          title: "Employee Self-Solution",
           description: "Employees access payslips, tax docs, and leave balances anytime.",
           icon: "self-service",
           features: []
@@ -561,7 +764,7 @@ const sampleServices = [
   }
 ];
 
-export const seedServiceDatabase = async () => {
+export const seedSolutionDatabase = async () => {
   try {
     await mongoose.connect(MONGODB_URI, {
       useNewUrlParser: true,
@@ -571,12 +774,12 @@ export const seedServiceDatabase = async () => {
     console.log('Connected to MongoDB');
 
     // Clear existing data
-    await Service.deleteMany({});
+    await Solution.deleteMany({});
     console.log('Cleared existing services');
 
     // Insert sample data
-    const createdServices = await Service.insertMany(sampleServices);
-    console.log(`Seeded ${createdServices.length} services`);
+    const createdSolutions = await Solution.insertMany(sampleSolutions);
+    console.log(`Seeded ${createdSolutions.length} services`);
 
     process.exit(0);
   } catch (error) {
