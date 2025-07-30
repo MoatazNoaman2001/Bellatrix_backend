@@ -766,22 +766,17 @@ const sampleSolutions = [
 
 export const seedSolutionDatabase = async () => {
   try {
-    await mongoose.connect(MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    });
 
     console.log('Connected to MongoDB');
 
     // Clear existing data
     await Solution.deleteMany({});
-    console.log('Cleared existing services');
+    console.log('Cleared existing solutions');
 
     // Insert sample data
     const createdSolutions = await Solution.insertMany(sampleSolutions);
-    console.log(`Seeded ${createdSolutions.length} services`);
+    console.log(`Seeded ${createdSolutions.length} solutions`);
 
-    process.exit(0);
   } catch (error) {
     console.error('Error seeding database:', error);
     process.exit(1);

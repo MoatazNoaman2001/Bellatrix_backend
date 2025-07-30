@@ -17,6 +17,7 @@ import { seedSolutionDatabase } from './seeders/solutionSeed.js';
 
 // Swagger imports
 import { specs, swaggerUi, swaggerOptions } from './swagger.js';
+import { seedIndustryDatabase } from './seeders/industriesSeed.js';
 
 /**
  * @swagger
@@ -82,6 +83,7 @@ app.use(errorHandler);
 mongoose.connect('mongodb://localhost:27017/Belletrix').then(() => {
   console.log('Connected to MongoDB');
   seedSolutionDatabase();
+  seedIndustryDatabase();
 });
 
 const PORT = process.env.PORT || 5005;
