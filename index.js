@@ -13,6 +13,7 @@ import aboutRoutes from './routes/aboutRoute.js';
 import integerationRoutes from './routes/integerationRoute.js';
 import payrollRoutes from './routes/payrollRoute.js';
 import serviceRoute from './routes/solutionRoute.js'
+import industryRoute from './routes/industriesRoute.js';
 import { seedSolutionDatabase } from './seeders/solutionSeed.js';
 
 // Swagger imports
@@ -75,6 +76,7 @@ app.use('/api/about', aboutRoutes);
 app.use('/api/integration', integerationRoutes);
 app.use('/api/payroll', payrollRoutes);
 app.use('/api/services', serviceRoute);
+app.use('/api/industries', industryRoute);
 
 // Error handling middleware
 app.use(errorHandler);
