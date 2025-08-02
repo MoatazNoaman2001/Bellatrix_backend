@@ -767,13 +767,9 @@ const sampleSolutions = [
 export const seedSolutionDatabase = async () => {
   try {
 
-    console.log('Connected to MongoDB');
-
-    // Clear existing data
     await Solution.deleteMany({});
     console.log('Cleared existing solutions');
 
-    // Insert sample data
     const createdSolutions = await Solution.insertMany(sampleSolutions);
     console.log(`Seeded ${createdSolutions.length} solutions`);
 
