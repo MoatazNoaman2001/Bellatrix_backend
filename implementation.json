@@ -1,0 +1,347 @@
+{
+    "info": {
+        "name": "Implementation API",
+        "description": "Postman collection for Implementation Page API endpoints",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_postman_id": "implementation-api-collection",
+        "version": {
+            "major": 1,
+            "minor": 0,
+            "patch": 0
+        }
+    },
+    "item": [
+        {
+            "name": "Public Endpoints",
+            "item": [
+                {
+                    "name": "Get All Implementation Pages",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{BASE_URL}}/api/implementation",
+                            "host": [
+                                "{{BASE_URL}}"
+                            ],
+                            "path": [
+                                "api",
+                                "implementation"
+                            ]
+                        },
+                        "description": "Get all active implementation pages"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Implementation Page by Slug",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{BASE_URL}}/api/implementation/netsuite-implementation-excellence",
+                            "host": [
+                                "{{BASE_URL}}"
+                            ],
+                            "path": [
+                                "api",
+                                "implementation",
+                                "netsuite-implementation-excellence"
+                            ]
+                        },
+                        "description": "Get implementation page by slug"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Implementation Page by ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{BASE_URL}}/api/implementation/id/{{IMPLEMENTATION_ID}}",
+                            "host": [
+                                "{{BASE_URL}}"
+                            ],
+                            "path": [
+                                "api",
+                                "implementation",
+                                "id",
+                                "{{IMPLEMENTATION_ID}}"
+                            ]
+                        },
+                        "description": "Get implementation page by ID"
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Admin Endpoints",
+            "item": [
+                {
+                    "name": "Create Implementation Page",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{AUTH_TOKEN}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "NetSuite Implementation Excellence",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "slug",
+                                    "value": "netsuite-implementation-excellence",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "description",
+                                    "value": "Transform your business with our proven NetSuite implementation methodology",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "heroSection[title]",
+                                    "value": "NetSuite Implementation Excellence",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "heroSection[subtitle]",
+                                    "value": "Powered by Expert Consultation",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "heroSection[description]",
+                                    "value": "Our proven implementation methodology ensures successful NetSuite deployment",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "backgroundVideo",
+                                    "type": "file",
+                                    "description": "Background video for hero section"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{BASE_URL}}/api/implementation",
+                            "host": [
+                                "{{BASE_URL}}"
+                            ],
+                            "path": [
+                                "api",
+                                "implementation"
+                            ]
+                        },
+                        "description": "Create new implementation page with file upload"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Implementation Page",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{AUTH_TOKEN}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "Updated Implementation Name",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "description",
+                                    "value": "Updated description",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "backgroundVideo",
+                                    "type": "file",
+                                    "description": "New background video (optional)"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{BASE_URL}}/api/implementation/{{IMPLEMENTATION_ID}}",
+                            "host": [
+                                "{{BASE_URL}}"
+                            ],
+                            "path": [
+                                "api",
+                                "implementation",
+                                "{{IMPLEMENTATION_ID}}"
+                            ]
+                        },
+                        "description": "Update implementation page"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Implementation Page",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{AUTH_TOKEN}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{BASE_URL}}/api/implementation/{{IMPLEMENTATION_ID}}",
+                            "host": [
+                                "{{BASE_URL}}"
+                            ],
+                            "path": [
+                                "api",
+                                "implementation",
+                                "{{IMPLEMENTATION_ID}}"
+                            ]
+                        },
+                        "description": "Delete implementation page and associated files"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Toggle Implementation Page Status",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{AUTH_TOKEN}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{BASE_URL}}/api/implementation/{{IMPLEMENTATION_ID}}/toggle-status",
+                            "host": [
+                                "{{BASE_URL}}"
+                            ],
+                            "path": [
+                                "api",
+                                "implementation",
+                                "{{IMPLEMENTATION_ID}}",
+                                "toggle-status"
+                            ]
+                        },
+                        "description": "Toggle active/inactive status of implementation page"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Upload Hero Video",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{AUTH_TOKEN}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "video",
+                                    "type": "file",
+                                    "description": "Video file to upload"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{BASE_URL}}/api/implementation/upload-video",
+                            "host": [
+                                "{{BASE_URL}}"
+                            ],
+                            "path": [
+                                "api",
+                                "implementation",
+                                "upload-video"
+                            ]
+                        },
+                        "description": "Upload video file for hero section"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Hero Video",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{AUTH_TOKEN}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{BASE_URL}}/api/implementation/delete-video/{{VIDEO_FILENAME}}",
+                            "host": [
+                                "{{BASE_URL}}"
+                            ],
+                            "path": [
+                                "api",
+                                "implementation",
+                                "delete-video",
+                                "{{VIDEO_FILENAME}}"
+                            ]
+                        },
+                        "description": "Delete specific video file"
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "key": "BASE_URL",
+            "value": "http://localhost:5005",
+            "type": "string"
+        },
+        {
+            "key": "AUTH_TOKEN",
+            "value": "your-jwt-token-here",
+            "type": "string"
+        },
+        {
+            "key": "IMPLEMENTATION_ID",
+            "value": "60d0fe4f5311236168a109ca",
+            "type": "string"
+        },
+        {
+            "key": "VIDEO_FILENAME",
+            "value": "1234567890-123456789.mp4",
+            "type": "string"
+        }
+    ]
+}

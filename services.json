@@ -1,316 +1,79 @@
 {
     "info": {
-      "_postman_id": "a1b2c3d4-e5f6-7890-a1b2-c3d4e5f67890",
-      "name": "Service API",
-      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+      "name": "Services API",
+      "description": "Postman collection for Services API endpoints",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+      "_postman_id": "services-api-collection",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      }
     },
     "item": [
       {
-        "name": "Services",
-        "item": [
-          {
-            "name": "Get All Services",
-            "request": {
-              "method": "GET",
-              "header": [],
-              "url": {
-                "raw": "{{base_url}}/api/services?page=1&limit=10",
-                "host": ["{{base_url}}"],
-                "path": ["api", "services"],
-                "query": [
-                  {
-                    "key": "page",
-                    "value": "1"
-                  },
-                  {
-                    "key": "limit",
-                    "value": "10"
-                  }
-                ]
-              }
-            },
-            "response": []
+        "name": "Get All Services",
+        "request": {
+          "method": "GET",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "url": {
+            "raw": "{{BASE_URL}}/api/services",
+            "host": ["{{BASE_URL}}"],
+            "path": ["api", "services"]
           },
-          {
-            "name": "Get Service by Slug",
-            "request": {
-              "method": "GET",
-              "header": [],
-              "url": {
-                "raw": "{{base_url}}/api/services/hr-management",
-                "host": ["{{base_url}}"],
-                "path": ["api", "services", "hr-management"]
-              }
-            },
-            "response": []
+          "description": "Get both support and consultation services (flattened implementation and training pages)"
+        },
+        "response": []
+      },
+      {
+        "name": "Get Consultation Services Only",
+        "request": {
+          "method": "GET",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "url": {
+            "raw": "{{BASE_URL}}/api/services/consultation",
+            "host": ["{{BASE_URL}}"],
+            "path": ["api", "services", "consultation"]
           },
-          {
-            "name": "Create Service",
-            "request": {
-              "method": "POST",
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                },
-                {
-                  "key": "Authorization",
-                  "value": "Bearer {{admin_token}}"
-                }
-              ],
-              "body": {
-                "mode": "raw",
-                "raw": "{\n  \"name\": \"HR Management\",\n  \"description\": \"Complete HR solution\",\n  \"hero\": {\n    \"title\": \"Modern HR Solution\",\n    \"subtitle\": \"Automate your HR processes\",\n    \"settings\": {\n      \"show\": true\n    }\n  }\n}"
-              },
-              "url": {
-                "raw": "{{base_url}}/api/services",
-                "host": ["{{base_url}}"],
-                "path": ["api", "services"]
-              }
-            },
-            "response": []
+          "description": "Get flattened array of all implementation and training pages"
+        },
+        "response": []
+      },
+      {
+        "name": "Get Support Services Only",
+        "request": {
+          "method": "GET",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "url": {
+            "raw": "{{BASE_URL}}/api/services/support",
+            "host": ["{{BASE_URL}}"],
+            "path": ["api", "services", "support"]
           },
-          {
-            "name": "Create Service with Media",
-            "request": {
-              "method": "POST",
-              "header": [
-                {
-                  "key": "Authorization",
-                  "value": "Bearer {{admin_token}}"
-                }
-              ],
-              "body": {
-                "mode": "formdata",
-                "formdata": [
-                  {
-                    "key": "name",
-                    "value": "HR Management",
-                    "type": "text"
-                  },
-                  {
-                    "key": "description",
-                    "value": "Complete HR solution",
-                    "type": "text"
-                  },
-                  {
-                    "key": "mediaSection",
-                    "value": "hero",
-                    "type": "text"
-                  },
-                  {
-                    "key": "altText",
-                    "value": "HR Platform Overview",
-                    "type": "text"
-                  },
-                  {
-                    "key": "fallbackColor",
-                    "value": "#001038",
-                    "type": "text"
-                  },
-                  {
-                    "key": "media",
-                    "type": "file",
-                    "src": "/path/to/your/file.jpg"
-                  }
-                ]
-              },
-              "url": {
-                "raw": "{{base_url}}/api/services",
-                "host": ["{{base_url}}"],
-                "path": ["api", "services"]
-              }
-            },
-            "response": []
-          },
-          {
-            "name": "Update Service",
-            "request": {
-              "method": "PATCH",
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                },
-                {
-                  "key": "Authorization",
-                  "value": "Bearer {{admin_token}}"
-                }
-              ],
-              "body": {
-                "mode": "raw",
-                "raw": "{\n  \"description\": \"Updated HR solution description\",\n  \"hero\": {\n    \"title\": \"New HR Solution Title\"\n  }\n}"
-              },
-              "url": {
-                "raw": "{{base_url}}/api/services/hr-management",
-                "host": ["{{base_url}}"],
-                "path": ["api", "services", "hr-management"]
-              }
-            },
-            "response": []
-          },
-          {
-            "name": "Update Service with Media",
-            "request": {
-              "method": "PATCH",
-              "header": [
-                {
-                  "key": "Authorization",
-                  "value": "Bearer {{admin_token}}"
-                }
-              ],
-              "body": {
-                "mode": "formdata",
-                "formdata": [
-                  {
-                    "key": "mediaSection",
-                    "value": "hero",
-                    "type": "text"
-                  },
-                  {
-                    "key": "altText",
-                    "value": "New HR Platform Image",
-                    "type": "text"
-                  },
-                  {
-                    "key": "media",
-                    "type": "file",
-                    "src": "/path/to/your/new-image.jpg"
-                  }
-                ]
-              },
-              "url": {
-                "raw": "{{base_url}}/api/services/hr-management/with-media",
-                "host": ["{{base_url}}"],
-                "path": ["api", "services", "hr-management", "with-media"]
-              }
-            },
-            "response": []
-          },
-          {
-            "name": "Upload Media to Section",
-            "request": {
-              "method": "PATCH",
-              "header": [
-                {
-                  "key": "Authorization",
-                  "value": "Bearer {{admin_token}}"
-                }
-              ],
-              "body": {
-                "mode": "formdata",
-                "formdata": [
-                  {
-                    "key": "section",
-                    "value": "hero",
-                    "type": "text"
-                  },
-                  {
-                    "key": "altText",
-                    "value": "HR Platform Overview",
-                    "type": "text"
-                  },
-                  {
-                    "key": "fallbackColor",
-                    "value": "#001038",
-                    "type": "text"
-                  },
-                  {
-                    "key": "media",
-                    "type": "file",
-                    "src": "/path/to/your/file.jpg"
-                  }
-                ]
-              },
-              "url": {
-                "raw": "{{base_url}}/api/services/hr-management/media",
-                "host": ["{{base_url}}"],
-                "path": ["api", "services", "hr-management", "media"]
-              }
-            },
-            "response": []
-          },
-          {
-            "name": "Update Service Section",
-            "request": {
-              "method": "PATCH",
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                },
-                {
-                  "key": "Authorization",
-                  "value": "Bearer {{admin_token}}"
-                }
-              ],
-              "body": {
-                "mode": "raw",
-                "raw": "{\n  \"title\": \"Updated Pricing Plans\",\n  \"plans\": [\n    {\n      \"name\": \"Basic\",\n      \"price\": \"$2,500\",\n      \"features\": [\"Feature 1\", \"Feature 2\"]\n    }\n  ]\n}"
-              },
-              "url": {
-                "raw": "{{base_url}}/api/services/hr-management/sections/pricing",
-                "host": ["{{base_url}}"],
-                "path": ["api", "services", "hr-management", "sections", "pricing"]
-              }
-            },
-            "response": []
-          },
-          {
-            "name": "Toggle Service Status",
-            "request": {
-              "method": "PATCH",
-              "header": [
-                {
-                  "key": "Authorization",
-                  "value": "Bearer {{admin_token}}"
-                }
-              ],
-              "body": {
-                "mode": "raw",
-                "raw": ""
-              },
-              "url": {
-                "raw": "{{base_url}}/api/services/hr-management/status",
-                "host": ["{{base_url}}"],
-                "path": ["api", "services", "hr-management", "status"]
-              }
-            },
-            "response": []
-          },
-          {
-            "name": "Delete Service",
-            "request": {
-              "method": "DELETE",
-              "header": [
-                {
-                  "key": "Authorization",
-                  "value": "Bearer {{admin_token}}"
-                }
-              ],
-              "body": {
-                "mode": "raw",
-                "raw": ""
-              },
-              "url": {
-                "raw": "{{base_url}}/api/services/hr-management",
-                "host": ["{{base_url}}"],
-                "path": ["api", "services", "hr-management"]
-              }
-            },
-            "response": []
-          }
-        ]
+          "description": "Get support services object with technical support information"
+        },
+        "response": []
       }
     ],
     "variable": [
       {
-        "key": "base_url",
-        "value": "http://localhost:5005"
-      },
-      {
-        "key": "admin_token",
-        "value": "your_admin_jwt_token_here"
+        "key": "BASE_URL",
+        "value": "http://localhost:5005",
+        "type": "string"
       }
     ]
   }
