@@ -6,7 +6,6 @@ import path from 'path';
 import authRoutes from './routes/authRoute.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import landingRoutes from './routes/landingRoute.js';
-import seedDatabase from './models/home/seed.js';
 import implementationRoutes from './routes/implementationRoute.js';
 import trainingRoutes from './routes/trainingRoute.js';
 import aboutRoutes from './routes/aboutRoute.js';
@@ -20,6 +19,7 @@ import { seedSolutionDatabase } from './seeders/solutionSeed.js';
 // Swagger imports
 import { specs, swaggerUi, swaggerOptions } from './swagger.js';
 import { seedIndustryDatabase } from './seeders/industriesSeed.js';
+import { seedImplementationDatabase } from './seeders/implementationSeed.js';
 
 /**
  * @swagger
@@ -88,6 +88,7 @@ mongoose.connect('mongodb://localhost:27017/Belletrix').then(() => {
   console.log('Connected to MongoDB');
   seedSolutionDatabase();
   seedIndustryDatabase();
+  seedImplementationDatabase();
 });
 
 const PORT = process.env.PORT || 5005;
