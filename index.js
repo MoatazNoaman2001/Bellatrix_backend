@@ -76,7 +76,7 @@ app.use('/api/training', trainingRoutes);
 app.use('/api/about', aboutRoutes);
 app.use('/api/integration', integerationRoutes);
 app.use('/api/payroll', payrollRoutes);
-app.use('/api/solution', solutionRoute);
+app.use('/api/solutions', solutionRoute);
 app.use('/api/industries', industryRoute);
 app.use('/api/services', serviceRoute);
 
