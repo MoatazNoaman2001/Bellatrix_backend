@@ -20,6 +20,7 @@ import { seedSolutionDatabase } from './seeders/solutionSeed.js';
 import { specs, swaggerUi, swaggerOptions } from './swagger.js';
 import { seedIndustryDatabase } from './seeders/industriesSeed.js';
 import { seedImplementationDatabase } from './seeders/implementationSeed.js';
+import seedHomeDatabase from './models/home/seed.js';
 
 /**
  * @swagger
@@ -86,6 +87,7 @@ app.use(errorHandler);
 // Database connection and seeding
 mongoose.connect('mongodb://localhost:27017/Belletrix').then(() => {
   console.log('Connected to MongoDB');
+  seedHomeDatabase();
   seedSolutionDatabase();
   seedIndustryDatabase();
   seedImplementationDatabase();
