@@ -7,8 +7,8 @@ dotenv.config();
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/Belletrix';
 
 const sampleImplementationPage = {
-  name: "NetSuite Implementation Excellence",
-  slug: "netsuite-implementation-excellence",
+  name: "Implementation",
+  slug: "implementation",
   description: "Transform your business with our proven NetSuite implementation methodology and expert guidance.",
   isActive: true,
   heroSection: {

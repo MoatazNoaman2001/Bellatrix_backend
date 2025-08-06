@@ -9,8 +9,8 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/Bellet
 
 const sampleCustomizations = [
   {
-    name: "NetSuite Customization & Development",
-    slug: "netsuite-customization-development",
+    name: "Customization",
+    slug: "customization",
     description: "Expert NetSuite customization services to tailor your system to unique business requirements",
     isActive: true,
     customizationPage: {
@@ -153,8 +153,8 @@ const sampleCustomizations = [
 
 const sampleIntegrations = [
   {
-    name: "NetSuite Integration Solutions",
-    slug: "netsuite-integration-solutions",
+    name: "Integration",
+    slug: "integration",
     description: "Seamlessly connect NetSuite with your business systems for unified operations",
     isActive: true,
     heroContent: {
