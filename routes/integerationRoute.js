@@ -1,12 +1,32 @@
+
+// integrationRoutes.js
 import express from 'express';
-const router = express.Router();
-import { getIntegration, createIntegration, updateIntegration, deleteIntegration } from '../controllers/integerationController.js'
+import {
+  getAllIntegrations,
+  getIntegrationBySlug,
+  getIntegrationById,
+  createIntegration,
+  updateIntegration,
+  deleteIntegration,
+  toggleIntegrationStatus
+} from '../controllers/integerationController.js';
 import { authenticateToken } from '../middleware/authMiddleware.js';
-import { upload } from '../middleware/multerConfig.js';
 
-router.get('/', getIntegration);
-router.post('/', authenticateToken, upload.single('media'), createIntegration);
-router.patch('/', authenticateToken, upload.single('media'), updateIntegration);
-router.delete('/', authenticateToken, deleteIntegration);
+const integrationRouter = express.Router();
 
-export default router;
+// GET Routes
+integrationRouter.get('/', getAllIntegrations);
+integrationRouter.get('/slug/:slug', getIntegrationBySlug);
+integrationRouter.get('/:id', getIntegrationById);
+
+// POST Routes
+integrationRouter.post('/',authenticateToken, createIntegration);
+
+// PATCH Routes
+integrationRouter.patch('/:id',authenticateToken, updateIntegration);
+integrationRouter.patch('/:id/toggle-status',authenticateToken, toggleIntegrationStatus);
+
+// DELETE Routes
+integrationRouter.delete('/:id',authenticateToken, deleteIntegration);
+
+export default integrationRouter ;
