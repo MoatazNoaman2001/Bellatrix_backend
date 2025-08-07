@@ -23,6 +23,7 @@ import { seedImplementationDatabase } from './seeders/implementationSeed.js';
 import seedHomeDatabase from './models/home/seed.js';
 import { seedBothDatabases } from './seeders/customizationAndIntegrationSeed.js';
 import { seedConsultationDatabase } from './seeders/consultationSeed.js';
+import { seedTrainingPageDatabase } from './seeders/trainingSeeder.js';
 
 /**
  * @swagger
@@ -94,6 +95,7 @@ mongoose.connect('mongodb://localhost:27017/Belletrix').then(() => {
   seedImplementationDatabase();
   seedConsultationDatabase();
   seedBothDatabases();
+  seedTrainingPageDatabase();
 });
 
 const PORT = process.env.PORT || 5005;
