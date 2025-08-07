@@ -723,21 +723,11 @@ const sampleIndustries = [
 
 export const seedIndustryDatabase = async () => {
   try {
-    // Clear existing industries
     await Industry.deleteMany({});
     console.log('Cleared existing industries');
-
-    // Seed new industries
     const createdIndustries = await Industry.insertMany(sampleIndustries);
     console.log(`Seeded ${createdIndustries.length} industries`);
-
   } catch (error) {
     console.error('Error seeding database:', error);
-    process.exit(1);
   }
 };
-
-// Run the seeder if this file is executed directly
-if (import.meta.url === `file://${process.argv[1]}`) {
-  seedIndustryDatabase();
-}
