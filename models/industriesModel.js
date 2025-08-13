@@ -406,6 +406,6 @@ industrySchema.statics.findActive = function() {
   return this.find({ isActive: true }).sort({ createdAt: -1 });
 };
 
-const Industry = mongoose.model('Industries', industrySchema);
+const Industry = mongoose.model('Industriess', industrySchema);
 
 export default Industry;

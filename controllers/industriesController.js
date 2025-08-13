@@ -70,6 +70,13 @@ export const getAllIndustries = async (req, res) => {
       .limit(limit * 1)
       .skip((page - 1) * limit)
       .sort({ createdAt: -1 });
+      
+    console.log('Raw MongoDB query result:', industries);
+    console.log('Expected schema fields vs actual:', {
+      expected: ['name', 'slug', 'description', 'hero', 'stats', 'challenges', 'solutions'],
+      actual: Object.keys(industries[0] || {})
+    });
+      
     
     const total = await Industry.countDocuments(filter);
     
