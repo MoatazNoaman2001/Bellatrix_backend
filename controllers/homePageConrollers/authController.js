@@ -11,11 +11,6 @@ const JWT_SECRET = 'Bellatrix-894654189';
 
 export const createAdmin = async (req, res, next) => {
   try {
-    const existingAdmin = await User.findOne({ isAdmin: true });
-    if (existingAdmin) {
-      return res.status(400).json({ message: 'Admin already exists' });
-    }
-
     const admin = new User({
       username: req.body.username,
       email: req.body.email,
